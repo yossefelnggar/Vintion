@@ -1,98 +1,151 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vintion | التصميم الثوري</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {
       font-family: 'Segoe UI', sans-serif;
       background: #0b0b0b;
-      color: #fff;
+      color: white;
       scroll-behavior: smooth;
     }
-    a { text-decoration: none; color: inherit; }
+    a {text-decoration: none; color: inherit;}
 
     nav {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1rem 5%; position: fixed; top: 0; width: 100%; z-index: 999;
-      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 1rem 5%;
+      position: fixed;
+      width: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 1000;
     }
     .logo {
-      font-size: 1.6rem; font-weight: bold;
+      font-size: 1.6rem;
+      font-weight: bold;
       background: linear-gradient(90deg, #ff8a00, #e52e71);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     nav ul {
-      display: flex; list-style: none; gap: 2rem;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      font-size: 1rem;
     }
-    nav li {
-      position: relative;
-    }
+    nav li {position: relative;}
     nav li::after {
-      content: ''; position: absolute; bottom: -5px; right: 0;
-      width: 0%; height: 2px; background: #ff8a00; transition: 0.3s;
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      right: 0;
+      width: 0%;
+      height: 2px;
+      background: #ff8a00;
+      transition: 0.3s;
     }
     nav li:hover::after {
-      width: 100%; left: 0; right: auto;
+      width: 100%;
+      left: 0;
+      right: auto;
     }
 
     header {
-      height: 100vh;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.2)),
-        url('https://images.unsplash.com/photo-1620152487935-f0875c536d2e?auto=format&fit=crop&w=1470&q=80') no-repeat center/cover;
-      display: flex; align-items: center; justify-content: center;
-      text-align: center; padding-top: 80px;
+      min-height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1620152487935-f0875c536d2e?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 80px;
     }
     header h1 {
-      font-size: 3rem;
+      font-size: 2.8rem;
       background: linear-gradient(90deg, #f5a623, #50e3c2);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       animation: glow 2s infinite alternate;
     }
 
     section {
-      padding: 100px 10%;
+      padding: 100px 5% 50px;
     }
-    .dashboard, .portfolio-grid, .testimonials {
-      display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;
+    .dashboard, .testimonials, .portfolio-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
     }
     .counter {
-      font-size: 2.5rem; color: #f5a623; font-weight: bold; text-align: center;
+      font-size: 2.2rem;
+      color: #f5a623;
+      font-weight: bold;
+      text-align: center;
     }
     .counter-label {
-      text-align: center; opacity: 0.7;
-    }
-    .testimonial, .portfolio-item {
-      background: rgba(255,255,255,0.05);
-      padding: 1.5rem; border-radius: 15px;
-      transition: 0.3s ease; border-right: 4px solid #f5a623;
-    }
-    .testimonial:hover, .portfolio-item:hover {
-      transform: scale(1.02);
-    }
-    .portfolio-item img {
-      width: 100%; border-radius: 10px;
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.7;
     }
 
-    .contact-form input, .contact-form textarea {
-      width: 100%; margin: 0.5rem 0; padding: 1rem;
-      background: rgba(255,255,255,0.1); border: none; color: white;
+    .testimonial, .portfolio-item {
+      background: rgba(255,255,255,0.05);
+      padding: 1.2rem;
+      border-radius: 10px;
+      width: 280px;
+      border-right: 4px solid #f5a623;
+    }
+
+    .portfolio-item img {
+      width: 100%;
       border-radius: 10px;
     }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 0.9rem;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: white;
+      border-radius: 8px;
+    }
     .contact-form button {
-      padding: 0.8rem 2rem;
+      padding: 0.7rem 2rem;
       background: linear-gradient(135deg, #25D366, #128C7E);
-      border: none; color: white; font-weight: bold; border-radius: 25px;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 20px;
       cursor: pointer;
     }
+
     footer {
-      background: #111; text-align: center; padding: 2rem 10%;
+      background: #111;
+      padding: 2rem 5%;
+      text-align: center;
     }
+
     @keyframes glow {
       from { text-shadow: 0 0 10px #f5a623; }
       to { text-shadow: 0 0 20px #50e3c2; }
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
@@ -102,16 +155,16 @@
     <ul>
       <li><a href="#dashboard">الإحصائيات</a></li>
       <li><a href="#testimonials">العملاء</a></li>
-      <li><a href="#portfolio">أعمالنا</a></li>
-      <li><a href="#jobs">وظائف</a></li>
-      <li><a href="#contact">تواصل</a></li>
+      <li><a href="#portfolio">الأعمال</a></li>
+      <li><a href="#jobs">الوظائف</a></li>
+      <li><a href="#contact">التواصل</a></li>
     </ul>
   </nav>
 
   <header>
     <div>
-      <h1>نصمم المستقبل... بألوانك</h1>
-      <p style="margin-top:1rem;opacity:0.7">ابدأ رحلة التميز البصري الآن مع Vintion</p>
+      <h1>نحو عالم بصري جديد</h1>
+      <p style="margin-top: 1rem; opacity: 0.7;">ابدأ الآن رحلتك مع Vintion نحو التصميم الثوري</p>
     </div>
   </header>
 
@@ -133,18 +186,18 @@
   </section>
 
   <section id="testimonials">
-    <h2>آراء العملاء</h2>
+    <h2 style="text-align:center">ماذا يقول عملاؤنا؟</h2>
     <div class="testimonials">
       <div class="testimonial">“Vintion غيرت كل مفهومي عن التصميم.” – سارة</div>
-      <div class="testimonial">“فريق عبقري بكل معنى الكلمة.” – كريم</div>
-      <div class="testimonial">“أبدعتم في كل شيء.” – ياسين</div>
-      <div class="testimonial">“من أجمل التجارب اللي عشتها.” – ليلى</div>
-      <div class="testimonial">“كأنها شركة عالمية فعلاً.” – أروى</div>
+      <div class="testimonial">“فريق مبدع. نتائج حقيقية.” – كريم</div>
+      <div class="testimonial">“مشروعنا انطلق بقوة.” – ليلى</div>
+      <div class="testimonial">“كل تفصيلة محسوبة.” – ياسين</div>
+      <div class="testimonial">“وكالة عالمية فعلاً.” – أروى</div>
     </div>
   </section>
 
   <section id="portfolio">
-    <h2>أعمالنا</h2>
+    <h2 style="text-align:center">بعض من أعمالنا</h2>
     <div class="portfolio-grid">
       <div class="portfolio-item"><img src="img/yossef1.jpg" alt="عمل 1"></div>
       <div class="portfolio-item"><img src="img/yossef2.jpg" alt="عمل 2"></div>
@@ -152,23 +205,23 @@
   </section>
 
   <section id="jobs">
-    <h2>قدّم على وظيفة</h2>
-    <p>نبحث عن مبدعين! أرسل طلبك وسنتواصل معك عبر واتساب</p>
+    <h2 style="text-align:center">قدم لوظيفة</h2>
+    <p style="text-align:center">نبحث عن مبدعين، تواصل معنا مباشرة عبر واتساب</p>
     <form onsubmit="return sendWhatsAppMessage(true)" class="contact-form">
       <input type="text" id="job-name" placeholder="اسمك" required />
       <input type="email" id="job-email" placeholder="بريدك الإلكتروني" required />
-      <textarea id="job-message" rows="5" placeholder="لماذا ترغب بالانضمام؟" required></textarea>
-      <button type="submit">أرسل الطلب 💬</button>
+      <textarea id="job-message" rows="5" placeholder="لماذا ترغب بالانضمام إلينا؟" required></textarea>
+      <button type="submit">إرسال الطلب 💬</button>
     </form>
   </section>
 
   <section id="contact">
-    <h2>تواصل معنا</h2>
+    <h2 style="text-align:center">تواصل معنا الآن</h2>
     <form onsubmit="return sendWhatsAppMessage(false)" class="contact-form">
       <input type="text" id="name" placeholder="اسمك" required />
       <input type="email" id="email" placeholder="بريدك الإلكتروني" required />
       <textarea id="message" rows="5" placeholder="رسالتك" required></textarea>
-      <button type="submit">أرسل عبر واتساب 💬</button>
+      <button type="submit">إرسال عبر واتساب 💬</button>
     </form>
     <div style="text-align:center; margin-top:2rem;">
       <a href="https://wa.me/201145473068" target="_blank" style="
@@ -209,12 +262,8 @@
       const message = document.getElementById(isJob ? 'job-message' : 'message').value.trim();
 
       const title = isJob ? '📩 طلب توظيف جديد' : '📩 رسالة تواصل';
-      const fullMessage = `${title}:
-👤 الاسم: ${name}
-📧 البريد: ${email}
-📝 الرسالة: ${message}`;
-      const encoded = encodeURIComponent(fullMessage);
-      window.open(`https://wa.me/201145473068?text=${encoded}`, '_blank');
+      const fullMessage = `${title}:%0A👤 الاسم: ${name}%0A📧 البريد: ${email}%0A📝 الرسالة: ${message}`;
+      window.open(`https://wa.me/201145473068?text=${fullMessage}`, '_blank');
       return false;
     }
   </script>
